@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--bean 태그의 class 속성은 인터페이스 타입이 아닌 구현 클래스 타입으로 작성해야 한다.-->
+    <bean id="account" class="com.ohgiraffers.common.PersonalAccount">
+        <constructor-arg index="0"><value>1002-051-053-541</value></constructor-arg>
+        <constructor-arg index="1"><value>0</value></constructor-arg>
+    </bean>
+
+    <!--생성자주입-->
+<!--    <bean id="member" class="com.ohgiraffers.common.Member">-->
+<!--        <constructor-arg name="sequence" value="1"/>-->
+<!--        <constructor-arg name="name" value="조평훈"/>-->
+<!--        <constructor-arg name="phone" value="010-5518-2290"/>-->
+<!--        <constructor-arg name="email" value="punghun12@gmail.com"/>-->
+<!--        &lt;!&ndash;다른 bean의 값을 가져올 때 ref 속성을 이용해 account의 값을 가져온다. => 의존성 주입&ndash;&gt;-->
+<!--        &lt;!&ndash;생성자(constructor)를 통해서 가져왔기 때문에 생성자 주입 &ndash;&gt;-->
+<!--        <constructor-arg name="personalAccount" ref="account"/>-->
+<!--    </bean>-->
+
+    <!--setter 주입-->
+    <!--property 를 통해 값을 주입한다.-->
+    <bean id="member" class="com.ohgiraffers.common.Member">
+        <property name="sequence" value="1"/>
+        <property name="name" value="조평훈"/>
+        <property name="phone" value="010-5518-2290"/>
+        <property name="email" value="punghun12@gmail.com"/>
+        <property name="personalAccount" ref="account"/>
+
+    </bean>
+</beans>
